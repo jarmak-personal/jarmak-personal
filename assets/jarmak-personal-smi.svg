@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="687" height="782" viewBox="0 0 687 782" font-family="'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" role="img" aria-label="Claude Code session running jarmak-personal-smi, an nvidia-smi style readout of my current projects">
+<style>
+text { font-size: 12px; fill: #d0d3da; }
+.dim { fill: #5b5f6b; } .muted { fill: #9aa0ac; } .bright { fill: #eceef2; }
+.orange { fill: #d97757; } .green { fill: #76b900; } .link { fill: #79c0ff; text-decoration: underline; }
+.fade { opacity: 0; animation: appear 0.01s linear var(--t) forwards; }
+.type { clip-path: inset(0 100% 0 0); animation: typing var(--d) steps(var(--n)) var(--t) forwards; }
+.cursor { fill: #d97757; animation: blink 1.1s step-end var(--t) infinite; }
+@keyframes appear { to { opacity: 1; } }
+@keyframes typing { to { clip-path: inset(0 -2% 0 0); } }
+@keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .fade, .type, .cursor { animation: none; opacity: 1; clip-path: none; }
+}
+</style>
+<rect width="687" height="782" rx="10" fill="#16171d" stroke="#2e303a"/>
+<path d="M0 10 a10 10 0 0 1 10 -10 h667 a10 10 0 0 1 10 10 v24 h-687 z" fill="#1f2027"/>
+<circle cx="22" cy="17" r="6" fill="#ff5f57"/>
+<circle cx="42" cy="17" r="6" fill="#febc2e"/>
+<circle cx="62" cy="17" r="6" fill="#28c840"/>
+<text x="343" y="21" text-anchor="middle" fill="#9aa0ac" font-size="11">claude — ~/jarmak-personal</text>
+<text x="22" y="65" class="fade" style="--t:0.40s" xml:space="preserve"><tspan class="orange">✻ </tspan><tspan class="bright">Welcome to Claude Code!</tspan></text>
+<text x="22" y="99" class="type" style="--t:1.00s;--d:2.72s;--n:85" xml:space="preserve"><tspan class="dim">&gt; </tspan><tspan class="bright">Hey Claude, please build me jarmak-personal-smi that highlights my current projects</tspan></text>
+<text x="22" y="116" class="type" style="--t:3.72s;--d:2.69s;--n:84" xml:space="preserve"><tspan class="dim">  </tspan><tspan class="bright">and some interesting tidbits. Also at the bottom include my work github: jarmak-nv</tspan></text>
+<text x="22" y="150" class="fade" style="--t:6.91s" xml:space="preserve"><tspan class="orange">● </tspan><tspan>I'll build jarmak-personal-smi and run it for you.</tspan></text>
+<text x="22" y="167" class="fade" style="--t:7.51s" xml:space="preserve"><tspan class="green">● </tspan><tspan class="bright">Bash</tspan><tspan class="muted">(./jarmak-personal-smi)</tspan></text>
+<text x="22" y="184" class="fade" style="--t:7.91s" xml:space="preserve"><tspan class="dim">  ⎿  </tspan><tspan class="muted">Running…</tspan></text>
+<text x="22" y="218" class="fade" style="--t:8.31s" xml:space="preserve"><tspan class="dim">+---------------------------------------------------------------------------------------+</tspan></text>
+<text x="22" y="235" class="fade" style="--t:8.40s" xml:space="preserve"><tspan class="dim">|</tspan><tspan> JARMAK-PERSONAL-SMI 2026.07     Driver Version: caffeine-560.94   CUDA Version: vibes </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="252" class="fade" style="--t:8.49s" xml:space="preserve"><tspan class="dim">|-----------------------------------------+----------------------+----------------------|</tspan></text>
+<text x="22" y="269" class="fade" style="--t:8.58s" xml:space="preserve"><tspan class="dim">|</tspan><tspan> Idx  Name                 Persistence-M </tspan><tspan class="dim">|</tspan><tspan> Branch-Id     Disp.A </tspan><tspan class="dim">|</tspan><tspan> Volatile Scope-Creep </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="286" class="fade" style="--t:8.67s" xml:space="preserve"><tspan class="dim">|</tspan><tspan> Vibe Temp   Perf          Pwr:Usage/Cap </tspan><tspan class="dim">|</tspan><tspan>          Brain-Usage </tspan><tspan class="dim">|</tspan><tspan> Repo-Util   Focus M. </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="303" class="fade" style="--t:8.76s" xml:space="preserve"><tspan class="dim">|=========================================+======================+======================|</tspan></text>
+<text x="22" y="320" class="fade" style="--t:8.85s" xml:space="preserve"><tspan class="dim">|</tspan><tspan>   0  </tspan><tspan class="green">hvir                 </tspan><tspan>           On </tspan><tspan class="dim">|</tspan><tspan> main:dirty        On </tspan><tspan class="dim">|</tspan><tspan>                  N/A </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="337" class="fade" style="--t:8.94s" xml:space="preserve"><tspan class="dim">|</tspan><tspan>  98%   96C    P0        420W / 400W     </tspan><tspan class="dim">|</tspan><tspan>    8192MiB / 8192MiB </tspan><tspan class="dim">|</tspan><tspan>       97%    Agentic </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="354" class="fade" style="--t:9.03s" xml:space="preserve"><tspan class="dim">+-----------------------------------------+----------------------+----------------------+</tspan></text>
+<text x="22" y="371" class="fade" style="--t:9.12s" xml:space="preserve"><tspan class="dim">|</tspan><tspan>   1  </tspan><tspan class="green">dungeoneer           </tspan><tspan>           On </tspan><tspan class="dim">|</tspan><tspan> main              On </tspan><tspan class="dim">|</tspan><tspan>                  N/A </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="388" class="fade" style="--t:9.21s" xml:space="preserve"><tspan class="dim">|</tspan><tspan>  95%   81C    P1        300W / 400W     </tspan><tspan class="dim">|</tspan><tspan>    8192MiB / 8192MiB </tspan><tspan class="dim">|</tspan><tspan>       88%    Agentic </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="405" class="fade" style="--t:9.30s" xml:space="preserve"><tspan class="dim">+-----------------------------------------+----------------------+----------------------+</tspan></text>
+<text x="22" y="422" class="fade" style="--t:9.39s" xml:space="preserve"><tspan class="dim">|</tspan><tspan>   2  </tspan><tspan class="green">skillager            </tspan><tspan>           On </tspan><tspan class="dim">|</tspan><tspan> main              On </tspan><tspan class="dim">|</tspan><tspan>                  N/A </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="439" class="fade" style="--t:9.48s" xml:space="preserve"><tspan class="dim">|</tspan><tspan>  80%   52C    P5         90W / 400W     </tspan><tspan class="dim">|</tspan><tspan>    8192MiB / 8192MiB </tspan><tspan class="dim">|</tspan><tspan>       34%    Default </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="456" class="fade" style="--t:9.57s" xml:space="preserve"><tspan class="dim">+-----------------------------------------+----------------------+----------------------+</tspan></text>
+<text x="22" y="473" class="fade" style="--t:9.66s" xml:space="preserve"><tspan class="dim">|</tspan><tspan>   3  </tspan><tspan class="green">vibeSpatial          </tspan><tspan>           On </tspan><tspan class="dim">|</tspan><tspan> main              On </tspan><tspan class="dim">|</tspan><tspan>                  N/A </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="490" class="fade" style="--t:9.75s" xml:space="preserve"><tspan class="dim">|</tspan><tspan>  76%   38C    P8         15W / 400W     </tspan><tspan class="dim">|</tspan><tspan>    8192MiB / 8192MiB </tspan><tspan class="dim">|</tspan><tspan>       12%    Default </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="507" class="fade" style="--t:9.84s" xml:space="preserve"><tspan class="dim">+---------------------------------------------------------------------------------------+</tspan></text>
+<text x="22" y="541" class="fade" style="--t:10.02s" xml:space="preserve"><tspan class="dim">+---------------------------------------------------------------------------------------+</tspan></text>
+<text x="22" y="558" class="fade" style="--t:10.11s" xml:space="preserve"><tspan class="dim">|</tspan><tspan> Processes (tidbits):                                                                  </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="575" class="fade" style="--t:10.20s" xml:space="preserve"><tspan class="dim">|</tspan><tspan>   PID   Type    Process name                                                Mem Usage </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="592" class="fade" style="--t:10.29s" xml:space="preserve"><tspan class="dim">|=======================================================================================|</tspan></text>
+<text x="22" y="609" class="fade" style="--t:10.38s" xml:space="preserve"><tspan class="dim">|</tspan><tspan>  0001   agent   hvir -- view-first workbench wrapped around agent terminals   9182MiB </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="626" class="fade" style="--t:10.47s" xml:space="preserve"><tspan class="dim">|</tspan><tspan>  0002   agent   dungeoneer -- local-first AI dungeon master for real tables   4096MiB </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="643" class="fade" style="--t:10.56s" xml:space="preserve"><tspan class="dim">|</tspan><tspan>  0007   bg      skillager -- add, discover, vet, and expose agent skills       512MiB </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="660" class="fade" style="--t:10.65s" xml:space="preserve"><tspan class="dim">|</tspan><tspan>  0042   loop    vibe-while-u-vibe -- music synced to Claude Code sessions      128MiB </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="677" class="fade" style="--t:10.74s" xml:space="preserve"><tspan class="dim">|</tspan><tspan>  1337   cuda    GPU-accelerate everything: vibeSpatial / vibeProj / weft        24GiB </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="694" class="fade" style="--t:10.83s" xml:space="preserve"><tspan class="dim">|</tspan><tspan>  9001   meta    this README -- built by an agent, obviously                       N/A </tspan><tspan class="dim">|</tspan></text>
+<text x="22" y="711" class="fade" style="--t:10.92s" xml:space="preserve"><tspan class="dim">+---------------------------------------------------------------------------------------+</tspan></text>
+<text x="22" y="745" class="fade" style="--t:11.51s" xml:space="preserve"><tspan class="green">● </tspan><tspan>Done! jarmak-personal-smi installed. Work me lives at </tspan><tspan class="link">github.com/jarmak-nv</tspan></text>
+<text x="22" y="762" class="fade" style="--t:11.81s" xml:space="preserve"><tspan class="dim">&gt; </tspan><tspan class="cursor">▋</tspan></text>
+</svg>

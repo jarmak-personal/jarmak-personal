@@ -1,0 +1,93 @@
+# jarmak-personal-smi config
+# Edit this when your focus shifts, then run: python3 generate_smi.py
+
+[header]
+version = "2026.07"
+driver = "caffeine-560.94"
+cuda = "vibes"
+
+[prompt]
+text = "Hey Claude, please build me jarmak-personal-smi that highlights my current projects and some interesting tidbits. Also at the bottom include my work github: jarmak-nv"
+
+[footer]
+text = "Done! jarmak-personal-smi installed. Work me lives at github.com/jarmak-nv"
+link = "github.com/jarmak-nv"
+
+# --- The GPU table: what I'm actually heads-down on right now ---
+# perf states: P0 = full send ... P8 = idle
+[[repos]]
+name = "hvir"
+branch = "main:dirty"
+focus = "97%"
+vibe = "98%"
+temp = "96C"
+perf = "P0"
+power = "420W / 400W"
+mode = "Agentic"
+
+[[repos]]
+name = "dungeoneer"
+branch = "main"
+focus = "88%"
+vibe = "95%"
+temp = "81C"
+perf = "P1"
+power = "300W / 400W"
+mode = "Agentic"
+
+[[repos]]
+name = "skillager"
+branch = "main"
+focus = "34%"
+vibe = "80%"
+temp = "52C"
+perf = "P5"
+power = "90W / 400W"
+mode = "Default"
+
+[[repos]]
+name = "vibeSpatial"
+branch = "main"
+focus = "12%"
+vibe = "76%"
+temp = "38C"
+perf = "P8"
+power = "15W / 400W"
+mode = "Default"
+
+# --- Processes section: the interesting tidbits ---
+[[processes]]
+pid = "0001"
+type = "agent"
+name = "hvir -- view-first workbench wrapped around agent terminals"
+mem = "9182MiB"
+
+[[processes]]
+pid = "0002"
+type = "agent"
+name = "dungeoneer -- local-first AI dungeon master for real tables"
+mem = "4096MiB"
+
+[[processes]]
+pid = "0007"
+type = "bg"
+name = "skillager -- add, discover, vet, and expose agent skills"
+mem = "512MiB"
+
+[[processes]]
+pid = "0042"
+type = "loop"
+name = "vibe-while-u-vibe -- music synced to Claude Code sessions"
+mem = "128MiB"
+
+[[processes]]
+pid = "1337"
+type = "cuda"
+name = "GPU-accelerate everything: vibeSpatial / vibeProj / weft"
+mem = "24GiB"
+
+[[processes]]
+pid = "9001"
+type = "meta"
+name = "this README -- built by an agent, obviously"
+mem = "N/A"
