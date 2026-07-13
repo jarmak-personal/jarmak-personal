@@ -6,14 +6,24 @@ Claude Code session: the prompt types itself, Claude "runs"
 jarmak-personal-smi, and an nvidia-smi-style table of current projects
 prints out. GitHub renders SVG animations fine through its image proxy.
 
-Usage: python3 generate_smi.py
+Usage: python3 generate_smi.py [--live]
+
+With --live, repo stats (focus %, perf state, power, branch) are derived
+from real GitHub activity over the last 14 days instead of the static
+values in smi.toml. API failures fall back to the config values, so the
+script never hard-fails on rate limits.
 """
 
 from __future__ import annotations
 
 import html
+import json
+import os
+import sys
 import textwrap
 import tomllib
+import urllib.request
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -45,6 +55,57 @@ def fit(s: str, w: int, align: str = "l") -> str:
     """Pad or truncate s to exactly w characters."""
     s = s[:w]
     return s.ljust(w) if align == "l" else s.rjust(w)
+
+
+# ---- live mode: derive stats from real GitHub activity --------------------
+
+def _api(path: str) -> object | None:
+    req = urllib.request.Request(
+        f"https://api.github.com{path}",
+        headers={"Accept": "application/vnd.github+json"},
+    )
+    token = os.environ.get("GITHUB_TOKEN")
+    if token:
+        req.add_header("Authorization", f"Bearer {token}")
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            return json.load(resp)
+    except Exception as e:  # rate limit, network, 404 — keep config values
+        print(f"  live: {path} failed ({e}), keeping config values", file=sys.stderr)
+        return None
+
+
+def enrich_live(cfg: dict) -> None:
+    """Overwrite repo stats in cfg with values derived from GitHub activity."""
+    owner = cfg.get("live", {}).get("owner", "jarmak-personal")
+    now = datetime.now(timezone.utc)
+    since = (now - timedelta(days=14)).isoformat()
+
+    activity = []
+    for r in cfg["repos"]:
+        meta = _api(f"/repos/{owner}/{r['name']}")
+        commits = _api(f"/repos/{owner}/{r['name']}/commits?since={since}&per_page=100")
+        if meta is None:
+            activity.append((r, None, 0))
+            continue
+        activity.append((r, meta, len(commits) if isinstance(commits, list) else 0))
+
+    total = sum(n for _, meta, n in activity if meta) or 1
+    for r, meta, n in activity:
+        if meta is None:
+            continue
+        pushed = datetime.fromisoformat(meta["pushed_at"].replace("Z", "+00:00"))
+        days_idle = (now - pushed).days
+        perf = "P0" if days_idle <= 2 else "P1" if days_idle <= 7 else "P5" if days_idle <= 21 else "P8"
+        focus = min(99, max(3, round(100 * n / total)))
+        r["focus"] = f"{focus}%"
+        r["perf"] = perf
+        r["temp"] = f"{min(99, 35 + 4 * n)}C"
+        r["power"] = f"{max(15, 4 * focus + 20 if perf == 'P0' else 4 * focus)}W / 400W"
+        r["mode"] = "Agentic" if perf in ("P0", "P1") else "Default"
+        r["branch"] = meta["default_branch"] + (":dirty" if days_idle <= 1 else "")
+
+    cfg["repos"].sort(key=lambda r: int(r["focus"].rstrip("%")), reverse=True)
 
 
 # A rendered line is a list of (text, css_class) parts; '' = default color.
@@ -210,6 +271,10 @@ text {{ font-size: {FONT_SIZE}px; fill: {FG}; }}
 
 def main() -> None:
     cfg = tomllib.loads((HERE / "smi.toml").read_text())
+    if cfg["header"].get("version") == "auto":
+        cfg["header"]["version"] = datetime.now(timezone.utc).strftime("%Y.%m")
+    if "--live" in sys.argv:
+        enrich_live(cfg)
     # sanity: every SMI table line must be exactly TABLE_W chars
     for line in smi_lines(cfg):
         s = "".join(p[0] for p in line)

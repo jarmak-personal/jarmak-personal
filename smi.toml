@@ -2,9 +2,14 @@
 # Edit this when your focus shifts, then run: python3 generate_smi.py
 
 [header]
-version = "2026.07"
+version = "auto"          # "auto" = current YYYY.MM
 driver = "caffeine-560.94"
 cuda = "vibes"
+
+[live]
+# --live derives focus/perf/temp/power/branch from GitHub activity
+# over the last 14 days; values below are the offline fallbacks.
+owner = "jarmak-personal"
 
 [prompt]
 text = "Hey Claude, please build me jarmak-personal-smi that highlights my current projects and some interesting tidbits. Also at the bottom include my work github: jarmak-nv"

@@ -1,0 +1,32 @@
+name: refresh-smi
+
+on:
+  schedule:
+    - cron: "17 9 1,15 * *" # twice a month
+  push:
+    paths: [smi.toml, generate_smi.py]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Regenerate SMI readout from live GitHub activity
+        run: python3 generate_smi.py --live
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit if changed
+        run: |
+          if git diff --quiet assets/; then
+            echo "no changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/
+          git commit -m "Refresh jarmak-personal-smi readout"
+          git push
